@@ -12,6 +12,9 @@
       <root url="jar://$PROJECT_DIR$/lib/antlr-2.7.7.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javassist-3.20.0-GA.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/hibernate-core-5.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/c3p0-0.9.5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-c3p0-5.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mchange-commons-java-0.2.11.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

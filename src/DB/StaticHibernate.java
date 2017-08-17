@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.c3p0.internal.C3P0ConnectionProvider;
 
 public class StaticHibernate {
    public static SessionFactory sessionFactory;
