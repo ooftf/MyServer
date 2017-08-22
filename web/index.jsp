@@ -11,6 +11,18 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <input type="button" onclick="inviteFriends();" value="inviteFriends"/>
+  <span id="show"> </span>
   </body>
 </html>
+<script>
+  function inviteFriends() {
+      window.WebViewJavascriptBridge.callHandler(
+          'inviteFriends'
+          , {'param': ""}
+          , function(responseData) {
+              document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+          }
+      );
+  }
+</script>
