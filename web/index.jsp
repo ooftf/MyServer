@@ -82,25 +82,53 @@
     }
     function userAgen() {
         document.getElementById("show").innerHTML = " window.getUserAgen()" +  window.userAgent
-
     }
     function getUserAgen2() {
         document.getElementById("show").innerHTML = " window.navigator.getUserAgen()" +  window.navigator.userAgent
     }
     function home() {
-        window.WebViewJavascriptBridge.callHandler('home', {'key':'value'}, function responseCallback(responseData) {
-            document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
-        })
+        if(isAndroid()){
+            window.WebViewJavascriptBridge.callHandler('home', {}, function responseCallback(responseData) {
+                document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+            })
+        } else if(isIOS()){
+            setupWebViewJavascriptBridge(function(bridge) {
+                /* Initialize your app here */
+                bridge.callHandler('home', {}, function responseCallback(responseData) {
+                    document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+                })
+            })
+        }
     }
     function projectList() {
-        window.WebViewJavascriptBridge.callHandler('projectList', {'key':'value'}, function responseCallback(responseData) {
-            document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
-        })
+        if(isAndroid()){
+            window.WebViewJavascriptBridge.callHandler('projectList', {'key':'value'}, function responseCallback(responseData) {
+                document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+            })
+        }else if(isIOS()){
+            setupWebViewJavascriptBridge(function(bridge) {
+                /* Initialize your app here */
+                bridge.callHandler('projectList', {}, function responseCallback(responseData) {
+                    document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+                })
+            })
+        }
+
     }
     function funds() {
-        window.WebViewJavascriptBridge.callHandler('funds', {'key':'value'}, function responseCallback(responseData) {
-            document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
-        })
+        if(isAndroid()){
+            window.WebViewJavascriptBridge.callHandler('funds', {'key':'value'}, function responseCallback(responseData) {
+                document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+            })
+        }else if(isIOS()){
+            setupWebViewJavascriptBridge(function(bridge) {
+                /* Initialize your app here */
+                bridge.callHandler('projectList', {}, function responseCallback(responseData) {
+                    document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+                })
+            })
+        }
+
     }
     function coupons() {
         window.WebViewJavascriptBridge.callHandler('coupons', {'key':'value'}, function responseCallback(responseData) {
@@ -136,6 +164,16 @@
         }, function responseCallback(responseData) {
             document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
         })
+    }
+    function isAndroid() {
+        if(window.navigator.userAgent.indexOf("Android")==0){
+            return true
+        }
+    }
+    function isIOS() {
+        if(window.navigator.userAgent.indexOf("IOS")==0){
+            return true
+        }
     }
     /*function goto() {
         window.WebViewJavascriptBridge.callHandler('goto',
